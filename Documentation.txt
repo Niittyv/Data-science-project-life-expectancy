@@ -1,0 +1,32 @@
+﻿The dataset is downloaded from Kaggle and it is published by Rıdvan Sözen: https://www.kaggle.com/rdvnszn34/life-expectancy-data-world-bank
+The data is gathered from World Bank and I wanted to figure out what are the biggest factors when estimating country's life excpectancy. I wanted to create a predictive 
+model to further investigate the correlation between certain predictors and the target variable.
+
+It seems that the GDPPerCapita and infant death rate have the highest correlation with life excpectancy. "Life expectancy at birth reflects the overall mortality level
+of a population. It summarizes the mortality pattern that prevails across all age groups in a given year – children and adolescents, adults and the elderly." -WHO.
+It is easy to come up with an intuition that high infant death rate lowers the country's life excpectancy drastically. GDPPerCapita indicates how able the country is to
+provide healthcare and good living conditions so that it is safer for mothers to give birth and take care of their children.
+
+I created multiple linear regression models based on the fact that our target variable is continuous, so this is clearly a regression problem, not a classification one.
+I transformed some data in order to eliminate skewness so that I can fit linear regression model on it more fluently.  The cross-validation accuracy score for the model
+is more than 80% with some variance on it. Other predictors had no impact on the performance of the model so I decided not to include them. Finally I validated the 
+model with new data of 2015 values gathered from World Bank.
+
+I made this project to improve my data cleaning skills and that is the reason why I didn't fix or fill any values with information gathered from the internet.
+That being said I wanted to work with dirty data and to come up with ideas on how to fill the missing values with appropriate methods.
+The dataset is dirty enough for me to practise data cleaning methods. There are empty rows and values and there are two identical columns.
+
+The biggest issue was to work with variables with no exact definitions. Country's developement status is not straightly correletated to the country's ability to 
+provide healthcare and thus life excpectancy and the highly correlated infant death rate are not guaranteed to be low in countries that claim themselves to be
+"developing". 
+
+I decided to drop China from the samples, the reason being that there were not enough filled variables and it is very hard to come up with conclusions on what to
+fill the empty values with based on it's developement status because China is somewhere between developing and developed.
+
+I'm having open questions whether or not it is acceptable to normalize skewed data using transformations (log, sqrt, power fuction etc.) as the transformed data and
+original data may not be interpretable in the same way for research purposes. Here's an article related to the question at hand:
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4120293/?fbclid=IwAR2m1V2D2JWzmSEEkQgBh_2UjBG9XIFm22-MQTAKMYV2LqpgsT7Q5qgFbrQ#!po=23.4375
+
+IN ORDER TO TEST THE MODEL ON REAL DATA, YOU HAVE TO USE LOGARITHMIC TRANSFORMATION ON THE PREDICTORS AND FOURTH ROOT ON THE PREDICTION DATA.
+
+-Jasper Niittyvuopio
